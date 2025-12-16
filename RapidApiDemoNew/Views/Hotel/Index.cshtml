@@ -1,0 +1,228 @@
+﻿@model RapidApiDemoNew.Models.HotelSearchRequest
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Otel Ara</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+    <style>
+        body {
+            min-height: 100vh;
+            background: radial-gradient(circle at top, #6a7cff, #4b2b7a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Inter", "Segoe UI", sans-serif;
+            padding: 20px;
+        }
+
+        .search-wrapper {
+            max-width: 900px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0,0,0,.35);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        /* LEFT VISUAL */
+        .visual-side {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+            .visual-side h2 {
+                font-size: 32px;
+                font-weight: 700;
+                margin-bottom: 15px;
+            }
+
+            .visual-side p {
+                opacity: .9;
+                font-size: 16px;
+                line-height: 1.6;
+            }
+
+        .visual-placeholder {
+            margin-top: 40px;
+            height: 220px;
+            border-radius: 16px;
+            background: rgba(255,255,255,.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            opacity: .8;
+        }
+
+        /* FORM */
+        .form-side {
+            padding: 50px;
+        }
+
+        .form-title {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .form-subtitle {
+            color: #6c757d;
+            margin-bottom: 30px;
+        }
+
+        .form-label {
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .form-control, .form-select {
+            border-radius: 12px;
+            padding: 12px 14px;
+            border: 1px solid #e0e0e0;
+            transition: all .25s ease;
+        }
+
+            .form-control:focus, .form-select:focus {
+                border-color: #667eea;
+                box-shadow: 0 0 0 .2rem rgba(102,126,234,.25);
+            }
+
+        .icon-input {
+            position: relative;
+        }
+
+            .icon-input i {
+                position: absolute;
+                right: 14px;
+                top: 50%;
+                transform: translateY(-50%);
+                color: #667eea;
+            }
+
+        .btn-search {
+            margin-top: 25px;
+            width: 100%;
+            border-radius: 999px;
+            padding: 16px;
+            font-size: 18px;
+            font-weight: 600;
+            border: none;
+            color: white;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            transition: all .3s ease;
+        }
+
+            .btn-search:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 15px 35px rgba(102,126,234,.4);
+            }
+
+        @@media (max-width: 768px) {
+            .search-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .visual-side {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="search-wrapper">
+
+        <!-- LEFT -->
+        <div class="visual-side">
+            <h2>Hayalindeki Tatili Bul</h2>
+            <p>
+                Yüzlerce otel arasından bütçene ve planına en uygun olanı saniyeler içinde keşfet.
+            </p>
+
+            <div class="visual-placeholder">
+                <!-- görsel url eklenecek -->
+                <img src="/images/otel.png" style="width:fit-content" alt="Alternate Text" />
+            </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="form-side">
+            <div class="form-title">Otel Arama</div>
+            <div class="form-subtitle">Tarihini ve detaylarını seç, gerisini bize bırak</div>
+
+            @if (ViewBag.error != null)
+            {
+                <div class="alert alert-danger">
+                    <i class="fas fa-exclamation-circle"></i> @ViewBag.error
+                </div>
+            }
+
+            <form asp-action="Index" method="post">
+
+                <div class="mb-3">
+                    <label class="form-label">Şehir</label>
+                    <div class="icon-input">
+                        <input asp-for="city" class="form-control" placeholder="İstanbul, Antalya..." required />
+                        <i class="fas fa-location-dot"></i>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Giriş Tarihi</label>
+                        <input type="date" class="form-control" asp-for="arrival_date"
+                               value="@(Model?.arrival_date != null && DateTime.TryParse(Model.arrival_date, out var d1) ? d1.ToString("yyyy-MM-dd") : "")" required />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Çıkış Tarihi</label>
+                        <input type="date" class="form-control" asp-for="departure_date"
+                               value="@(Model?.departure_date != null && DateTime.TryParse(Model.departure_date, out var d2) ? d2.ToString("yyyy-MM-dd") : "")" required />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Yetişkin Sayısı</label>
+                        <input type="number" class="form-control" asp-for="adults" min="1" value="@(Model?.adults > 0 ? Model.adults : 2)" />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Oda Sayısı</label>
+                        <input type="number" class="form-control" asp-for="room_qty" min="1" value="@(Model?.room_qty > 0 ? Model.room_qty : 1)" />
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Çocuk Yaşları</label>
+                    <input type="text" class="form-control" asp-for="children_age" placeholder="Örn: 5,8 (yoksa boş bırak)" />
+                </div>
+
+                <input type="hidden" asp-for="search_type" value="CITY" />
+                <input type="hidden" asp-for="location" value="TR" />
+
+                <button type="submit" class="btn-search">
+                    <i class="fas fa-search"></i> Otel Bul
+                </button>
+
+            </form>
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,233 @@
+﻿@{
+    Layout = null;
+
+    var hotel = ViewBag.Hotel;
+    var hotelId = ViewBag.hotelId;
+    var name = hotel["property"]?["name"]?.ToString();
+    var reviewScore = hotel["property"]?["reviewScore"]?.ToString();
+    var reviewScoreWord = hotel["property"]?["reviewScoreWord"]?.ToString();
+    var photoUrl = hotel["property"]?["photoUrls"]?[0]?.ToString();
+    var price = hotel["property"]?["priceBreakdown"]?["grossPrice"]?["value"]?.ToString();
+    var currency = hotel["property"]?["priceBreakdown"]?["grossPrice"]?["currency"]?.ToString();
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@name</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+    <style>
+        body {
+            background: #f4f6fb;
+            font-family: "Inter", "Segoe UI", sans-serif;
+            padding-bottom: 60px;
+        }
+
+        /* HERO */
+        .hero {
+            height: 420px;
+            position: relative;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: flex-end;
+            color: white;
+        }
+
+            .hero img {
+                position: absolute;
+                inset: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                opacity: .9;
+            }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,.7), rgba(0,0,0,.2));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 30px;
+            max-width: 1200px;
+            margin: auto;
+            width: 100%;
+        }
+
+        .hero h1 {
+            font-size: 34px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .rating-badge {
+            display: inline-block;
+            background: #667eea;
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* CONTENT */
+        .content {
+            max-width: 1200px;
+            margin: -40px auto 0;
+            padding: 0 15px;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 15px 40px rgba(0,0,0,.15);
+            margin-bottom: 30px;
+        }
+
+        .price-box {
+            text-align: right;
+        }
+
+            .price-box h2 {
+                font-size: 32px;
+                font-weight: 800;
+                color: #2f855a;
+                margin: 0;
+            }
+
+            .price-box small {
+                color: #6c757d;
+            }
+
+        /* ROOMS */
+        .room-card {
+            background: white;
+            border-radius: 18px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,.12);
+            transition: all .3s ease;
+            height: 100%;
+        }
+
+            .room-card:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 20px 45px rgba(0,0,0,.2);
+            }
+
+        .room-title {
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .room-price {
+            font-size: 22px;
+            font-weight: 800;
+            color: #2f855a;
+        }
+
+        .btn-reserve {
+            margin-top: 15px;
+            border-radius: 999px;
+            font-weight: 600;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="/Hotel/Index" class="btn btn-light position-fixed top-0 start-0 m-3 shadow">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+
+    <!-- HERO -->
+    <div class="hero">
+        @if (!string.IsNullOrEmpty(photoUrl))
+        {
+            <img src="@photoUrl" alt="@name" />
+        }
+        else
+        {
+            <!-- görsel url eklenecek -->
+        }
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+            <h1>@name</h1>
+
+            @if (!string.IsNullOrEmpty(reviewScore))
+            {
+                <span class="rating-badge">
+                    <i class="fas fa-star"></i> @reviewScore – @reviewScoreWord
+                </span>
+            }
+        </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <!-- INFO -->
+        <div class="info-card row align-items-center">
+            <div class="col-md-8">
+                <h5>Genel Bilgiler</h5>
+                <p class="text-muted mb-0">
+                    Konforlu odalar, merkezi konum ve misafir memnuniyeti odaklı hizmet anlayışı.
+                </p>
+            </div>
+            <div class="col-md-4 price-box">
+                @if (!string.IsNullOrEmpty(price))
+                {
+                    <h2>@price @currency</h2>
+                    <small>gecelik fiyat</small>
+                }
+            </div>
+        </div>
+
+        <!-- ROOMS -->
+        <h4 class="mb-3">Oda Seçenekleri</h4>
+
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="room-card">
+                    <div class="room-title">Standart Oda</div>
+                    <p class="text-muted mb-2">2 Kişi · 1 Yatak</p>
+                    <div class="room-price">@price @currency</div>
+                    <button class="btn btn-success btn-reserve">
+                        Rezervasyon Yap
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="room-card">
+                    <div class="room-title">Deluxe Oda</div>
+                    <p class="text-muted mb-2">3 Kişi · 2 Yatak</p>
+                    <div class="room-price">
+                        @(Convert.ToDecimal(price) + 2000) @currency
+                    </div>
+                    <button class="btn btn-success btn-reserve">
+                        Rezervasyon Yap
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="/HotelDetail/PhotosSlider/@hotelId" class="btn btn-outline-primary rounded-pill px-4">
+                <i class="fas fa-images"></i> Tüm Fotoğrafları Gör @hotelId
+            </a>
+        </div>
+
+    </div>
+
+</body>
+</html>

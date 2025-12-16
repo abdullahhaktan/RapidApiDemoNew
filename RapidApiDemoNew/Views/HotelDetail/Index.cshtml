@@ -1,0 +1,227 @@
+﻿@using Newtonsoft.Json.Linq
+@{
+    Layout = null;
+
+    var hotelsJson = ViewBag.Hotels as string;
+    var data = JObject.Parse(hotelsJson);
+    var hotels = data["data"]?["hotels"] as JArray;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Otel Sonuçları</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+    <style>
+        body {
+            background: radial-gradient(circle at top, #6a7cff, #4b2b7a);
+            min-height: 100vh;
+            padding: 40px 15px;
+            font-family: "Inter", "Segoe UI", sans-serif;
+        }
+
+        .page-header {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 35px;
+            box-shadow: 0 15px 40px rgba(0,0,0,.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+            .page-header h1 {
+                font-size: 28px;
+                font-weight: 700;
+                margin: 0;
+                color: #333;
+            }
+
+            .page-header p {
+                color: #6c757d;
+                margin: 5px 0 0;
+            }
+
+        .btn-back {
+            border-radius: 999px;
+            padding: 10px 24px;
+            font-weight: 600;
+        }
+
+        /* CARD */
+        .hotel-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,.15);
+            transition: all .3s ease;
+            height: 100%;
+            cursor: pointer;
+        }
+
+            .hotel-card:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 20px 50px rgba(0,0,0,.25);
+            }
+
+        .hotel-image {
+            height: 220px;
+            width: 100%;
+            object-fit: cover;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,.7);
+            font-size: 14px;
+        }
+
+        .hotel-body {
+            padding: 20px;
+        }
+
+        .hotel-name {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #2d3748;
+        }
+
+        .hotel-rating {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 14px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .hotel-features {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .feature {
+            background: #f1f3f5;
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 12px;
+            color: #555;
+        }
+
+        .hotel-price {
+            font-size: 22px;
+            font-weight: 800;
+            color: #2f855a;
+        }
+
+            .hotel-price small {
+                font-size: 13px;
+                color: #777;
+                font-weight: 500;
+            }
+
+        @@media (max-width: 768px) {
+            .page-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- HEADER -->
+        <div class="page-header">
+            <div>
+                <h1>Bulunan Oteller</h1>
+                <p>@(hotels?.Count ?? 0) adet otel listelendi</p>
+            </div>
+            <a href="/Hotel/Index" class="btn btn-outline-primary btn-back">
+                <i class="fas fa-arrow-left"></i> Yeni Arama
+            </a>
+        </div>
+
+        @if (hotels != null && hotels.Count > 0)
+        {
+            <div class="row g-4">
+                @foreach (var hotel in hotels)
+                {
+                    var hotelId = hotel["hotel_id"]?.ToString();
+                    var name = hotel["property"]?["name"]?.ToString();
+                    var photoUrl = hotel["property"]?["photoUrls"]?[0]?.ToString();
+                    var reviewScore = hotel["property"]?["reviewScore"]?.ToString();
+                    var reviewScoreWord = hotel["property"]?["reviewScoreWord"]?.ToString();
+                    var price = hotel["property"]?["priceBreakdown"]?["grossPrice"]?["value"]?.ToString();
+                    var currency = hotel["property"]?["priceBreakdown"]?["grossPrice"]?["currency"]?.ToString();
+
+                    <div class="col-md-6 col-lg-4">
+                        <div class="hotel-card" onclick="location.href='/HotelDetail/Details?hotelId=@hotelId'">
+
+                            @if (!string.IsNullOrEmpty(photoUrl))
+                            {
+                                <img src="@photoUrl" class="hotel-image" alt="@name" />
+                            }
+                            else
+                            {
+                                <div class="hotel-image">
+                                    <!-- görsel url eklenecek -->
+                                    Otel Görseli
+                                </div>
+                            }
+
+                            <div class="hotel-body">
+                                <div class="hotel-name">@name</div>
+
+                                @if (!string.IsNullOrEmpty(reviewScore))
+                                {
+                                    <div class="hotel-rating">
+                                        <i class="fas fa-star"></i> @reviewScore – @reviewScoreWord
+                                    </div>
+                                }
+
+                                <div class="hotel-features">
+                                    <span class="feature"><i class="fas fa-wifi"></i> Wi-Fi</span>
+                                    <span class="feature"><i class="fas fa-car"></i> Otopark</span>
+                                    <span class="feature"><i class="fas fa-person-swimming"></i> Havuz</span>
+                                </div>
+
+                                @if (!string.IsNullOrEmpty(price))
+                                {
+                                    <div class="hotel-price">
+                                        @price @currency
+                                        <small>/ gece</small>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-light text-center p-5 rounded-4">
+                <h4>Otel bulunamadı</h4>
+                <p class="text-muted">Filtreleri değiştirerek tekrar deneyin.</p>
+            </div>
+        }
+
+    </div>
+
+</body>
+</html>
