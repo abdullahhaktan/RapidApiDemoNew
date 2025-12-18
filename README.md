@@ -1,4 +1,4 @@
-# 🚀 Rapid API Project - Daily Briefing & Travel Dashboard
+<img width="1005" height="846" alt="localhost_7246_Movies_ImdbTop100List" src="https://github.com/user-attachments/assets/a85054b8-7dbd-4e72-9b6b-e1b59f1ae6f4" /><img width="1521" height="1389" alt="localhost_7246_HotelDetail_Details_hotelId=244174" src="https://github.com/user-attachments/assets/3999c336-ab41-48ff-b09f-f1a5313fe9dc" /><img width="1521" height="5412" alt="localhost_7246_HotelDetail" src="https://github.com/user-attachments/assets/8dd6dc11-7799-4951-ba99-b75be702a5e9" /># 🚀 Rapid API Project - Daily Briefing & Travel Dashboard
 
 [TR]
 **ASP.NET Core ile Geliştirilmiş, Gemini AI ve Çoklu RapidAPI Servisleri Entegreli Modern Dashboard**
@@ -102,3 +102,20 @@ All data is dynamically fetched via external **RESTful API** services and enrich
     * Update your API keys in the `appsettings.json` file for both RapidAPI and Gemini AI.
 3.  **Start the Project:**
     * Open the `.sln` file in Visual Studio and press **F5**.
+
+## Proje Görselleri
+
+<img width="1263" height="2057" alt="localhost_7246_Dashboard_Index" src="https://github.com/user-attachments/assets/a8dd9755-b5d9-48c2-a154-3f6dfce5be74" />
+<img width="1263" height="1095" alt="localhost_7246_Hotel_Index" src="https://github.com/user-attachments/assets/2aa1e475-5779-4ebb-ad2c-57540978f94a" />
+<img width="1521" height="5412" alt="localhost_7246_HotelDetail" src="https://github.com/user-attachments/assets/09ed1c6f-0f31-4193-9146-43abb4a398bc" />
+<img width="1521" height="1389" alt="localhost_7246_HotelDetail_Details_hotelId=244174" src="https://github.com/user-attachments/assets/92eb7b5f-ddad-47ff-9829-0ec7456b8a33" />
+
+<img width="1544" height="878" alt="localhost_7246_HotelDetail_PhotosSlider_244174 (2)" src="https://github.com/user-attachments/assets/1c0c0fa7-1db5-4f0f-96cb-0688efc19948" />
+
+<img width="1544" height="878" alt="localhost_7246_HotelDetail_PhotosSlider_244174" src="https://github.com/user-attachments/assets/475bfd23-41be-43c0-a9ce-622142ba7b70" />
+
+<img width="1544" height="878" alt="localhost_7246_HotelDetail_PhotosSlider_244174 (1)" src="https://github.com/user-attachments/assets/b14c4f42-3415-4843-b652-ff049615a6c0" />
+<img width="1544" height="878" alt="localhost_7246_HotelDetail_PhotosSlider_244174 (4)" src="https://github.com/user-attachments/assets/22e0debf-dde2-405a-b198-9fe088cebe2f" />
+<img width="1544" height="878" alt="localhost_7246_HotelDetail_PhotosSlider_244174 (3)" src="https://github.com/user-attachments/assets/48d93a34-8cc5-453b-9f9b-be148945e2a8" />
+<img width="1005" height="846" alt="localhost_7246_Movies_ImdbTop100List" src="https://github.com/user-attachments/assets/770384b4-91ea-4b93-a1bf-5077b2f2b8b8" />
+
