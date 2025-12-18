@@ -7,7 +7,7 @@ namespace RapidApiDemoNew.Controllers
 {
     public class DashboardController(IGeminiService _geminiService) : Controller
     {
-        private const string ApiKey = "e738f473demsh7d5e50a5f1eec3dp1934b6jsn244af206ea2e";
+        private const string ApiKey = "ApiKey";
         private const string Host = "currency-conversion-and-exchange-rates.p.rapidapi.com";
 
         public async Task<IActionResult> Index()
@@ -224,7 +224,7 @@ namespace RapidApiDemoNew.Controllers
                     RequestUri = new Uri("https://gas-price.p.rapidapi.com/europeanCountries"),
                     Headers =
                     {
-                        { "x-rapidapi-key", "e738f473demsh7d5e50a5f1eec3dp1934b6jsn244af206ea2e" },
+                        { "x-rapidapi-key", "ApiKey" },
                         { "x-rapidapi-host", "gas-price.p.rapidapi.com" },
                     },
                 };
@@ -253,7 +253,7 @@ namespace RapidApiDemoNew.Controllers
                     RequestUri = new Uri("https://open-weather13.p.rapidapi.com/city?city=Antalya&lang=TR"),
                     Headers =
                     {
-                        { "x-rapidapi-key", "e738f473demsh7d5e50a5f1eec3dp1934b6jsn244af206ea2e" },
+                        { "x-rapidapi-key", "ApiKey" },
                         { "x-rapidapi-host", "open-weather13.p.rapidapi.com" },
                     },
                 };
