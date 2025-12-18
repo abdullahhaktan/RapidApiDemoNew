@@ -16,7 +16,7 @@ namespace RapidApiDemoNew.Controllers
                 RequestUri = new Uri("https://imdb-top-100-movies.p.rapidapi.com/"),
                 Headers =
                 {
-                    { "x-rapidapi-key", "b6a5624d34mshfcd3224e3121bffp1507c4jsnfd478a0285e4" },
+                    { "x-rapidapi-key", "ApiKey" },
                     { "x-rapidapi-host", "imdb-top-100-movies.p.rapidapi.com" },
                 },
             };
