@@ -23,7 +23,7 @@ namespace RapidApiDemoNew.Controllers
                 RequestUri = new Uri($"https://booking-com15.p.rapidapi.com/api/v1/hotels/searchDestination?query={Uri.EscapeDataString(requestDto.city)}"),
                 Headers =
                 {
-                    { "x-rapidapi-key", "e738f473demsh7d5e50a5f1eec3dp1934b6jsn244af206ea2e" },
+                    { "x-rapidapi-key", "ApiKey" },
                     { "x-rapidapi-host", "booking-com15.p.rapidapi.com" },
                 },
             };
