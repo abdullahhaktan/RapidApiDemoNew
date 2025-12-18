@@ -1,4 +1,4 @@
-<img width="1005" height="846" alt="localhost_7246_Movies_ImdbTop100List" src="https://github.com/user-attachments/assets/a85054b8-7dbd-4e72-9b6b-e1b59f1ae6f4" /><img width="1521" height="1389" alt="localhost_7246_HotelDetail_Details_hotelId=244174" src="https://github.com/user-attachments/assets/3999c336-ab41-48ff-b09f-f1a5313fe9dc" /><img width="1521" height="5412" alt="localhost_7246_HotelDetail" src="https://github.com/user-attachments/assets/8dd6dc11-7799-4951-ba99-b75be702a5e9" /># 🚀 Rapid API Project - Daily Briefing & Travel Dashboard
+Project - Daily Briefing & Travel Dashboard
 
 [TR]
 **ASP.NET Core ile Geliştirilmiş, Gemini AI ve Çoklu RapidAPI Servisleri Entegreli Modern Dashboard**
