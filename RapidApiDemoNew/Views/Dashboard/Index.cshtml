@@ -9,6 +9,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Daily Briefing</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
         :root {
@@ -27,103 +28,153 @@
 
         body {
             margin: 0;
-            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-family: "Inter", sans-serif;
             background: radial-gradient(circle at top, #1b1f2a, #0f1115);
             color: #fff;
             padding: 40px 20px;
         }
 
         .dashboard {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 20px;
         }
 
         .page-header {
             grid-column: 1 / -1;
             text-align: center;
-            margin-bottom: 10px;
+            margin-bottom: 30px;
         }
 
             .page-header h1 {
                 font-size: 32px;
-                font-weight: 700;
                 margin: 0;
             }
 
             .page-header p {
                 color: var(--text-muted);
-                margin-top: 6px;
+                margin-top: 8px;
             }
 
         .section-title {
             grid-column: 1 / -1;
-            margin-top: 30px;
-            font-size: 13px;
-            letter-spacing: 1.5px;
+            margin-top: 20px;
+            font-size: 11px;
+            letter-spacing: 1.2px;
             text-transform: uppercase;
             color: var(--text-muted);
         }
 
         .card {
-            background: linear-gradient(180deg, #1c202b, var(--card-bg));
+            background: var(--card-bg);
             border-radius: var(--radius);
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,.35);
-            transition: all .3s ease;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
-            .card:hover {
-                transform: translateY(-4px);
-                box-shadow: 0 20px 45px rgba(0,0,0,.5);
-            }
+        /* Market Cards */
+        .market-grid {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
 
         .metric-title {
-            font-size: 14px;
+            font-size: 12px;
             color: var(--text-muted);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             text-align: center;
         }
 
         .metric-value {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 700;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+        }
+
+        /* Weather Card */
+        .weather-card {
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            text-align: center;
+        }
+
+            .weather-card h2 {
+                font-size: 36px;
+                margin: 10px 0;
+            }
+
+            .weather-card .city {
+                font-weight: 600;
+                font-size: 18px;
+            }
+
+        /* Fuel Card */
+        .fuel-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .fuel-item {
+            flex: 1;
+        }
+
+            .fuel-item label {
+                display: block;
+                font-size: 10px;
+                color: var(--text-muted);
+                margin-bottom: 5px;
+            }
+
+            .fuel-item span {
+                font-weight: 600;
+                font-size: 14px;
+            }
+
+        /* AI Suggestion Cards */
+        .ai-card {
+            background: #15181e;
+            border: 1px solid #252a34;
+            height: 100%;
+        }
+
+            .ai-card h3 {
+                font-size: 16px;
+                margin-bottom: 15px;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+        .ai-content {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #ced4da;
         }
 
         .badge {
-            font-size: 12px;
-            padding: 5px 10px;
-            border-radius: 999px;
+            font-size: 10px;
+            padding: 4px 8px;
+            border-radius: 4px;
             font-weight: 600;
         }
 
         .positive {
-            background: rgba(76,175,80,.15);
             color: var(--success);
         }
 
         .negative {
-            background: rgba(244,67,54,.15);
             color: var(--danger);
-        }
-
-        .highlight {
-            background: linear-gradient(135deg, #5b8cff, #8f6bff);
-        }
-
-        .weather img {
-            width: 60px;
-            height: 60px;
-        }
-
-        .weather small {
-            color: rgba(255,255,255,.85);
         }
     </style>
 </head>
@@ -136,58 +187,82 @@
             <p>Günlük piyasa, hava durumu ve öneriler</p>
         </div>
 
-        <!-- MARKET -->
         <div class="section-title">Market Watch</div>
+        <div class="market-grid">
+            <div class="card">
+                <div class="metric-title">USD / TRY</div>
+                <div class="metric-value">
+                    @($"{Model.UsdTry:N2}₺")
+                    <span class="badge @(Model.UsdTryChange >= 0 ? "positive" : "negative")">
+                        @(Model.UsdTryChange >= 0 ? "▲" : "▼") @($"{Math.Abs(Model.UsdTryChange):N1}%")
+                    </span>
+                </div>
+            </div>
 
-        <div class="card">
-            <div class="metric-title">USD / TRY</div>
-            <div class="metric-value">
-                @($"{Model.UsdTry:N2}₺")
-                <span class="badge @(Model.UsdTryChange >= 0 ? "positive" : "negative")">
-                    @((Model.UsdTryChange >= 0 ? "▲" : "▼") + $" {Math.Abs(Model.UsdTryChange):N1}%")
-                </span>
+            <div class="card">
+                <div class="metric-title">EUR / TRY</div>
+                <div class="metric-value">
+                    @($"{Model.EurTry:N2}₺")
+                    <span class="badge @(Model.EurTryChange >= 0 ? "positive" : "negative")">
+                        @(Model.EurTryChange >= 0 ? "▲" : "▼") @($"{Math.Abs(Model.EurTryChange):N1}%")
+                    </span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="metric-title">BTC / USD</div>
+                <div class="metric-value">
+                    @($"{Model.BtcUsd:N0}$")
+                    <span class="badge @(Model.BtcChange >= 0 ? "positive" : "negative")">
+                        @(Model.BtcChange >= 0 ? "▲" : "▼") @($"{Math.Abs(Model.BtcChange):N1}%")
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title">Hava Durumu & Yakıt</div>
+
+        <div class="card weather-card">
+            <div class="city">☀️ Antalya</div>
+            <h2>@ViewBag.C °C</h2>
+            <div style="text-transform: capitalize;">@ViewBag.WeatherDescription</div>
+            <div style="margin-top: 10px; font-size: 12px; opacity: 0.9;">
+                <i class="fas fa-wind"></i> @ViewBag.WindSpeed m/s · <i class="fas fa-tint"></i> %@ViewBag.Humidity
             </div>
         </div>
 
         <div class="card">
-            <div class="metric-title">EUR / TRY</div>
-            <div class="metric-value">
-                @($"{Model.EurTry:N2}₺")
-                <span class="badge @(Model.EurTryChange >= 0 ? "positive" : "negative")">
-                    @((Model.EurTryChange >= 0 ? "▲" : "▼") + $" {Math.Abs(Model.EurTryChange):N1}%")
-                </span>
+            <div class="metric-title"><i class="fas fa-gas-pump"></i> Yakıt Fiyatları</div>
+            <div class="fuel-stats">
+                <div class="fuel-item">
+                    <label>Benzin</label>
+                    <span>@($"{ViewBag.gasoline:N2}₺")</span>
+                </div>
+                <div class="fuel-item">
+                    <label>Dizel</label>
+                    <span>@($"{ViewBag.diesel:N2}₺")</span>
+                </div>
+                <div class="fuel-item">
+                    <label>LPG</label>
+                    <span>@($"{ViewBag.lpg:N2}₺")</span>
+                </div>
             </div>
         </div>
 
-        <div class="card">
-            <div class="metric-title">BTC / USD</div>
-            <div class="metric-value">
-                @($"{Model.BtcUsd:N2}$")
-                <span class="badge @(Model.BtcChange >= 0 ? "positive" : "negative")">
-                    @((Model.BtcChange >= 0 ? "▲" : "▼") + $" {Math.Abs(Model.BtcChange):N1}%")
-                </span>
+        <div class="section-title">AI Önerileri</div>
+
+        <div class="card ai-card">
+            <h3>🍽️ Yemek Önerisi</h3>
+            <div class="ai-content">
+                @Html.Raw(ViewBag.foodSuggestion)
             </div>
         </div>
 
-        <div class="card">
-            <div class="metric-title">ETH / USD</div>
-            <div class="metric-value">
-                @($"{Model.EthUsd:N2}$")
-                <span class="badge @(Model.EthChange >= 0 ? "positive" : "negative")">
-                    @((Model.EthChange >= 0 ? "▲" : "▼") + $" {Math.Abs(Model.EthChange):N1}%")
-                </span>
+        <div class="card ai-card">
+            <h3>📍 Gezilecek Yer</h3>
+            <div class="ai-content">
+                @Html.Raw(ViewBag.placeSuggestion)
             </div>
-        </div>
-
-        <!-- WEATHER -->
-        <div class="section-title">İstanbul Hava Durumu</div>
-
-        <div class="card weather highlight">
-            <!-- görsel url eklenecek -->
-            <img src="@ViewBag.weather" alt="Weather" />
-            <h2>@($"{ViewBag.C}°C")</h2>
-            <small>@ViewBag.WeatherDescription</small>
-            <small>💨 @ViewBag.WindSpeed m/s · 💧 @ViewBag.Humidity%</small>
         </div>
 
     </div>
