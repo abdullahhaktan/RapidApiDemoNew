@@ -16,7 +16,7 @@ namespace RapidApiDemoNew.Controllers
                 RequestUri = new Uri("https://currency-conversion-and-exchange-rates.p.rapidapi.com/convert?from=USD&to=TRY&amount=1"),
                 Headers =
                 {
-                    { "x-rapidapi-key", "b6a5624d34mshfcd3224e3121bffp1507c4jsnfd478a0285e4" },
+                    { "x-rapidapi-key", "ApiKey" },
                     { "x-rapidapi-host", "currency-conversion-and-exchange-rates.p.rapidapi.com" },
                 },
             };
