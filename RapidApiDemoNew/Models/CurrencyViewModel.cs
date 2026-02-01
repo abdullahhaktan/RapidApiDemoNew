@@ -2,6 +2,6 @@
 {
     public class CurrencyViewModel
     {
-       public double result { get; set; }
+        public double result { get; set; }
     }
 }

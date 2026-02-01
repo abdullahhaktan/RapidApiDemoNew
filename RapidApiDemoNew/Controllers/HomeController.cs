@@ -1,6 +1,6 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using RapidApiDemoNew.Models;
+using System.Diagnostics;
 
 namespace RapidApiDemoNew.Controllers
 {

@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RapidApiDemoNew.Models;
-using System.Net.Http.Headers;
 
 namespace RapidApiDemoNew.Controllers
 {

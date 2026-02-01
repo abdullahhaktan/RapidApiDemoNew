@@ -2,7 +2,6 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RapidApiDemoNew.Models;
-using System.Net.Http.Headers;
 
 namespace RapidApiDemoNew.Controllers
 {
