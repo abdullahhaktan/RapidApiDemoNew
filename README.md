@@ -1,121 +1,240 @@
-Project - Daily Briefing & Travel Dashboard
+# 🌍 Daily Briefing & Travel Dashboard – Multi-API & Gemini AI Powered Smart Information Platform
 
-[TR]
-**ASP.NET Core ile Geliştirilmiş, Gemini AI ve Çoklu RapidAPI Servisleri Entegreli Modern Dashboard**
+> Finans, hava durumu, seyahat ve eğlence verilerini tek bir modern dashboard üzerinde toplayan yapay zeka destekli günlük bilgilendirme platformu  
+> A modern AI-powered daily briefing dashboard aggregating finance, weather, travel, and entertainment data via multiple external APIs
 
-[![.NET Core](https://img.shields.io/badge/.NET_Core-8.0-purple.svg)](https://dotnet.microsoft.com/)
-[![C#](https://img.shields.io/badge/Language-C%23-blue.svg)](https://docs.microsoft.com/en-us/dotnet/csharp/)
+[![.NET](https://img.shields.io/badge/.NET-8.0-512bd4?logo=dotnet)](https://dotnet.microsoft.com/)
+[![Language](https://img.shields.io/badge/Language-C%23-blue.svg)](https://learn.microsoft.com/dotnet/csharp/)
 [![RapidAPI](https://img.shields.io/badge/API-RapidAPI-blue.svg)](https://rapidapi.com/)
-[![Gemini AI](https://img.shields.io/badge/AI-Gemini_Google-orange.svg)]()
+[![Google Gemini](https://img.shields.io/badge/AI-Google_Gemini-4285F4?logo=google)](https://ai.google.dev/)
+[![REST](https://img.shields.io/badge/Architecture-RESTful_API-orange.svg)]()
 
 ---
 
-## 💻 Proje Hakkında
-Bu proje, finans, hava durumu ve seyahat gibi kritik verileri tek bir modern **dashboard** üzerinden kullanıcıya sunan bir "Günlük Bilgilendirme" platformudur. 
+## 🚀 Özellikler / Features
 
-Projenin temel amacı, farklı **RESTful API** servislerinden gelen dinamik verileri tek merkezde toplamak ve **Gemini AI** ile bu verileri zenginleştirerek kullanıcıya kişiselleştirilmiş öneriler sunmaktır. Tüm veri akışı asenkron (async) servis yapıları üzerinden sağlanmaktadır.
-
----
-
-## ✨ Temel Özellikler
-
-### Teknik Mimari
-* **ASP.NET Core:** RESTful API tüketimi için merkezi mimari.
-* **HttpClient & Async:** Tüm dış servisler `HttpClient` kullanılarak asenkron şekilde entegre edildi.
-* **JSON Yönetimi:** Veri işleme süreçlerinde `Newtonsoft.Json`, `JObject` ve güçlü model binding yapıları kullanıldı.
-* **Session Management:** Otel arama sonuçları ve kullanıcı tercihleri `Session` üzerinden dinamik olarak yönetildi.
-
-### Entegre Edilen Servisler (RapidAPI)
-* **Finans:** USD/TRY, EUR/TRY kurları ve BTC/USD kripto verileri (günlük değişim yüzdeleri ile).
-* **Akaryakıt:** Türkiye bazlı anlık akaryakıt fiyat hesaplamaları.
-* **Hava Durumu:** Şehir bazlı anlık ve detaylı hava durumu verileri.
-* **Seyahat (Booking API):** Otel arama, filtreleme ve detaylı bilgi görüntüleme.
-* **Eğlence (IMDb):** Top 100 film listesi entegrasyonu.
-
-### Yapay Zeka (Gemini AI) Modülleri
-* **Günlük Yemek Önerisi:** Kullanıcıya özel, yapay zeka tarafından üretilen menü fikirleri.
-* **Gezi Rehberi:** Konum bazlı, AI destekli gezilecek yer ve aktivite önerileri.
-* **Dinamik İçerik:** Dashboard üzerinde değişken, yapay zeka destekli metinler.
+| 🇹🇷 Türkçe | 🇬🇧 English |
+|-----------|------------|
+| RapidAPI üzerinden çoklu servis entegrasyonu | Multi-service integration via RapidAPI |
+| Gemini AI ile kişiselleştirilmiş öneriler | Personalized recommendations via Gemini AI |
+| Async HttpClient ile performanslı API tüketimi | High-performance async API consumption |
+| JSON model binding & JObject veri işleme | JSON model binding & JObject parsing |
+| Session tabanlı dinamik kullanıcı yönetimi | Session-based dynamic user flow |
+| Booking API ile otel arama & detay görüntüleme | Hotel search & detail views via Booking API |
+| Chart.js destekli veri sunumu | Data visualization via Chart.js |
+| IMDb Top 100 entegrasyonu | IMDb Top 100 integration |
 
 ---
 
-## 🚀 Nasıl Çalıştırılır?
+## 🌐 Multi-API Entegrasyon Mimarisi / Multi-API Integration Architecture
 
-1.  **Projeyi Klonlama:**
-    ```bash
-    git clone [https://github.com/username/RapidApiProject.git](https://github.com/username/RapidApiProject.git)
-    cd RapidApiProject
-    ```
-2.  **API Anahtarlarını Ayarlama:**
-    * `appsettings.json` dosyasını açın.
-    * [RapidAPI](https://rapidapi.com/) ve [Google AI Studio](https://aistudio.google.com/) üzerinden aldığınız API Key bilgilerini ilgili alanlara ekleyin.
-3.  **Projeyi Başlatma:**
-    * Visual Studio ile `.sln` dosyasını açın.
-    * **F5** tuşu ile projeyi ayağa kaldırın.
+Bu projede farklı servislerden gelen REST verileri merkezi bir dashboard yapısında birleştirilmiştir.
+
+✔ Finans verileri  
+✔ Akaryakıt fiyatları  
+✔ Hava durumu verileri  
+✔ Otel arama servisleri  
+✔ Film listeleri  
+
+All services are orchestrated asynchronously via HttpClient infrastructure.
 
 ---
 
-[EN]
+## 🤖 Gemini AI Entegrasyonu / Gemini AI Integration
 
-# 🚀 Rapid API Project
-**Daily Briefing & Travel Dashboard Developed with ASP.NET Core, Gemini AI, and Multi-RapidAPI Integration**
+Gemini AI kullanılarak dashboard içerikleri dinamik şekilde zenginleştirilmiştir:
 
----
+### 🍽️ Günlük Yemek Önerisi / Daily Meal Suggestion
 
-## 💻 About the Project
-This project is a **Daily Briefing & Travel Dashboard** designed to present critical data such as finance, weather, and travel through a single modern interface.
+AI destekli günlük menü önerileri oluşturulur.
 
-All data is dynamically fetched via external **RESTful API** services and enriched with **Gemini AI** to provide personalized recommendations. The project follows clean code principles and modern web application standards.
+Generates AI-based daily meal suggestions dynamically.
 
 ---
 
-## ✨ Core Features
+### 🧭 Gezi Rehberi / Travel Assistant
 
-### Technical Architecture
-* **ASP.NET Core:** Centralized architecture for RESTful API consumption.
-* **Async HttpClient:** All external services integrated asynchronously using `HttpClient`.
-* **Data Handling:** Advanced JSON processing with `Newtonsoft.Json` and `JObject`.
-* **Session Management:** Hotel search results handled efficiently via `Session`.
+Konum bazlı gezilecek yer önerileri sunar.
 
-### RapidAPI Integrations
-* **Finance:** Daily exchange rates (USD/TRY, EUR/TRY) and Crypto (BTC/USD).
-* **Fuel Prices:** Real-time fuel price calculations for Turkey.
-* **Weather:** City-based, instant weather data.
-* **Travel (Booking API):** Hotel search and detailed information.
-* **Entertainment:** IMDb Top 100 movies integration.
-
-### AI Integration (Gemini AI)
-* **Daily Meal Suggestions:** AI-generated daily menu ideas.
-* **Travel Recommendations:** AI-powered suggestions for attractions and activities.
-* **Dynamic Content:** Smart, AI-driven content generation across the dashboard.
+Location-based travel recommendations generated via AI.
 
 ---
 
-## 🚀 How to Run
+### 🧠 Dinamik Dashboard İçerikleri / Smart Dashboard Content
 
-1.  **Clone the Project:**
-    ```bash
-    git clone [https://github.com/username/RapidApiProject.git](https://github.com/username/RapidApiProject.git)
-    cd RapidApiProject
-    ```
-2.  **Configure API Keys:**
-    * Update your API keys in the `appsettings.json` file for both RapidAPI and Gemini AI.
-3.  **Start the Project:**
-    * Open the `.sln` file in Visual Studio and press **F5**.
+Dashboard üzerinde kullanıcıya özel içerikler üretilir.
 
-## Proje Görselleri
+Dynamic personalized dashboard content generated with Gemini AI.
 
-<img width="1263" height="2057" alt="localhost_7246_Dashboard_Index" src="https://github.com/user-attachments/assets/a8dd9755-b5d9-48c2-a154-3f6dfce5be74" />
-<img width="1263" height="1095" alt="localhost_7246_Hotel_Index" src="https://github.com/user-attachments/assets/2aa1e475-5779-4ebb-ad2c-57540978f94a" />
-<img width="1521" height="5412" alt="localhost_7246_HotelDetail" src="https://github.com/user-attachments/assets/09ed1c6f-0f31-4193-9146-43abb4a398bc" />
-<img width="1521" height="1389" alt="localhost_7246_HotelDetail_Details_hotelId=244174" src="https://github.com/user-attachments/assets/92eb7b5f-ddad-47ff-9829-0ec7456b8a33" />
+---
 
-<img width="1544" height="878" alt="localhost_7246_HotelDetail_PhotosSlider_244174 (2)" src="https://github.com/user-attachments/assets/1c0c0fa7-1db5-4f0f-96cb-0688efc19948" />
+## 📡 RapidAPI Servis Entegrasyonları / RapidAPI Integrations
 
-<img width="1544" height="878" alt="localhost_7246_HotelDetail_PhotosSlider_244174" src="https://github.com/user-attachments/assets/475bfd23-41be-43c0-a9ce-622142ba7b70" />
+Projede aşağıdaki servisler entegre edilmiştir:
 
-<img width="1544" height="878" alt="localhost_7246_HotelDetail_PhotosSlider_244174 (1)" src="https://github.com/user-attachments/assets/b14c4f42-3415-4843-b652-ff049615a6c0" />
-<img width="1544" height="878" alt="localhost_7246_HotelDetail_PhotosSlider_244174 (4)" src="https://github.com/user-attachments/assets/22e0debf-dde2-405a-b198-9fe088cebe2f" />
-<img width="1544" height="878" alt="localhost_7246_HotelDetail_PhotosSlider_244174 (3)" src="https://github.com/user-attachments/assets/48d93a34-8cc5-453b-9f9b-be148945e2a8" />
-<img width="1005" height="846" alt="localhost_7246_Movies_ImdbTop100List" src="https://github.com/user-attachments/assets/770384b4-91ea-4b93-a1bf-5077b2f2b8b8" />
+| Servis | Açıklama |
+|-------|----------|
+| Finance API | USD/TRY, EUR/TRY, BTC/USD verileri |
+| Fuel API | Türkiye bazlı akaryakıt fiyatları |
+| Weather API | Şehir bazlı hava durumu verileri |
+| Booking API | Otel arama & detay bilgileri |
+| IMDb API | Top 100 film listesi |
 
+Provides centralized aggregation of real-time external datasets.
+
+---
+
+## 🏗️ Mimari / Architecture
+
+```
+RapidApiDashboardProject/
+├── Controllers/
+│
+├── Services/
+│   ├── FinanceService/
+│   ├── WeatherService/
+│   ├── FuelService/
+│   ├── BookingService/
+│   └── MovieService/
+│
+├── AIIntegrations/
+│   └── GeminiService/
+│
+├── Models/
+│
+├── ViewComponents/
+│
+├── Views/
+│
+└── wwwroot/
+```
+
+Async service-based architecture ile dış API yönetimi optimize edilmiştir.
+
+---
+
+## 🧩 Kullanılan Tasarım Yaklaşımları / Design Approaches
+
+### Service-Based API Architecture
+
+Tüm dış servis çağrıları servis katmanında yönetilmektedir.
+
+Ensures maintainable external API orchestration.
+
+---
+
+### Async HttpClient Pattern
+
+Asenkron API çağrıları ile performans artırılmıştır.
+
+Improves scalability and responsiveness.
+
+---
+
+### JSON Parsing Architecture
+
+Newtonsoft.Json ve JObject kullanılarak güçlü veri işleme sağlanmıştır.
+
+Provides flexible structured API response handling.
+
+---
+
+### Session Management Pattern
+
+Kullanıcı tercihleri ve otel arama sonuçları session üzerinden yönetilmektedir.
+
+Supports dynamic user-driven dashboard experience.
+
+---
+
+## 🛠️ Kullanılan Teknolojiler / Tech Stack
+
+| Katman / Layer | Teknoloji |
+|---------------|-----------|
+| Backend | ASP.NET Core 8 MVC |
+| API Integration | RapidAPI Services |
+| AI Integration | Google Gemini AI |
+| HTTP Client | Async HttpClient |
+| JSON Handling | Newtonsoft.Json |
+| Session | ASP.NET Core Session |
+| Visualization | Chart.js |
+| UI | Bootstrap |
+| Language | C# |
+
+---
+
+## ⚙️ Kurulum / Setup
+
+### Gereksinimler / Requirements
+
+- .NET 8 SDK
+- RapidAPI Key
+- Google Gemini API Key
+- Visual Studio 2022+
+
+---
+
+### Adımlar / Steps
+
+```bash
+git clone https://github.com/username/RapidApiProject.git
+cd RapidApiProject
+```
+
+**API anahtarlarını appsettings.json içine ekleyin**
+
+```
+RapidApiKey=YOUR_API_KEY
+GeminiApiKey=YOUR_API_KEY
+```
+
+**Projeyi başlatın**
+
+```
+dotnet run
+```
+
+---
+
+## 📊 Proje Vizyonu / Project Vision
+
+Bu proje yalnızca bir dashboard uygulaması değildir.
+
+✔ Multi-API orchestration mimarisi  
+✔ Async HttpClient performans yönetimi  
+✔ Gemini AI destekli içerik üretimi  
+✔ RESTful servis entegrasyon yönetimi  
+
+This project demonstrates **modern API orchestration with AI-enhanced dashboard architecture**.
+
+---
+
+## 📸 Screenshots
+
+<img src="https://github.com/user-attachments/assets/a8dd9755-b5d9-48c2-a154-3f6dfce5be74" />
+
+<img src="https://github.com/user-attachments/assets/2aa1e475-5779-4ebb-ad2c-57540978f94a" />
+
+<img src="https://github.com/user-attachments/assets/09ed1c6f-0f31-4193-9146-43abb4a398bc" />
+
+<img src="https://github.com/user-attachments/assets/92eb7b5f-ddad-47ff-9829-0ec7456b8a33" />
+
+<img src="https://github.com/user-attachments/assets/1c0c0fa7-1db5-4f0f-96cb-0688efc19948" />
+
+<img src="https://github.com/user-attachments/assets/475bfd23-41be-43c0-a9ce-622142ba7b70" />
+
+<img src="https://github.com/user-attachments/assets/b14c4f42-3415-4843-b652-ff049615a6c0" />
+
+<img src="https://github.com/user-attachments/assets/22e0debf-dde2-405a-b198-9fe088cebe2f" />
+
+<img src="https://github.com/user-attachments/assets/48d93a34-8cc5-453b-9f9b-be148945e2a8" />
+
+<img src="https://github.com/user-attachments/assets/770384b4-91ea-4b93-a1bf-5077b2f2b8b8" />
+
+---
+
+## 👨‍💻 Geliştirici / Developer
+
+**Abdullah Haktan**
+
+GitHub → https://github.com/abdullahhaktan
