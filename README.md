@@ -213,21 +213,39 @@ This project demonstrates **modern API orchestration with AI-enhanced dashboard 
 
 <img src="https://github.com/user-attachments/assets/a8dd9755-b5d9-48c2-a154-3f6dfce5be74" />
 
+---
+
 <img src="https://github.com/user-attachments/assets/2aa1e475-5779-4ebb-ad2c-57540978f94a" />
+
+---
 
 <img src="https://github.com/user-attachments/assets/09ed1c6f-0f31-4193-9146-43abb4a398bc" />
 
+---
+
 <img src="https://github.com/user-attachments/assets/92eb7b5f-ddad-47ff-9829-0ec7456b8a33" />
+
+---
 
 <img src="https://github.com/user-attachments/assets/1c0c0fa7-1db5-4f0f-96cb-0688efc19948" />
 
+---
+
 <img src="https://github.com/user-attachments/assets/475bfd23-41be-43c0-a9ce-622142ba7b70" />
+
+---
 
 <img src="https://github.com/user-attachments/assets/b14c4f42-3415-4843-b652-ff049615a6c0" />
 
+---
+
 <img src="https://github.com/user-attachments/assets/22e0debf-dde2-405a-b198-9fe088cebe2f" />
 
+---
+
 <img src="https://github.com/user-attachments/assets/48d93a34-8cc5-453b-9f9b-be148945e2a8" />
+
+---
 
 <img src="https://github.com/user-attachments/assets/770384b4-91ea-4b93-a1bf-5077b2f2b8b8" />
 
